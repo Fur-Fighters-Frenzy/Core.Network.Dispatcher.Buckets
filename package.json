@@ -1,0 +1,25 @@
+{
+  "name": "validosik.core.network.dispatcher.buckets",
+  "displayName": "Core.Network Dispatcher Buckets",
+  "version": "0.0.1",
+  "unity": "6000.0",
+  "description": "Buckets integration for Core.Network.Dispatcher: marker-based DTO filtering, ready-to-use sinks, and typed FromClient<T> wrapper for publishing parsed events into BucketHub.",
+  "author": {
+    "name": "validosik"
+  },
+  "dependencies": {
+    "validosik.core.network.dispatcher": "0.0.1",
+    "validosik.core.buckets": "0.0.1"
+  },
+  "keywords": [
+    "core-network",
+    "dispatcher",
+    "buckets",
+    "events",
+    "routing",
+    "reflection",
+    "dto",
+    "publish",
+    "unity"
+  ]
+}
