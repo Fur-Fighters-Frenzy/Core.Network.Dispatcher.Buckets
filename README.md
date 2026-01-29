@@ -22,7 +22,7 @@ integration layer for projects that use **Validosik.Core.Buckets**.
 - `ServerToClientBucketSink<TKind>`: publishes parsed server DTOs directly: `BucketHub.Publish(dto)`
 - `ClientToServerBucketSink<TKind>`: publishes parsed client DTOs as `FromClient<TDto>`
 
-Optionally (if you include the extension helper):
+Optionally:
 
 - `InitializeBuckets(...)` extensions to bootstrap dispatchers with the provided sinks
 
@@ -64,7 +64,10 @@ ServerDispatcherBootstrapper<IServerEventDispatcher, ServerEventKind, IServerEve
 Or with the optional extension:
 
 ```csharp
+using Validosik.Core.Network.Dispatcher.Buckets;
+
 _serverDispatcher.InitializeBuckets<IServerEventDispatcher, ServerEventKind>(
+    new DispatcherBucketsBootstrapExtensions.ServerBuckets(),
     typeof(ServerEventKind).Assembly);
 ```
 
@@ -83,9 +86,15 @@ ClientDispatcherBootstrapper<IClientEventDispatcher, ClientEventKind, IClientEve
 Or with the optional extension:
 
 ```csharp
+using Validosik.Core.Network.Dispatcher.Buckets;
+
 _clientDispatcher.InitializeBuckets<IClientEventDispatcher, ClientEventKind>(
+    new DispatcherBucketsBootstrapExtensions.ClientBuckets(),
     typeof(ClientEventKind).Assembly);
 ```
+
+> Note: pass the assembly that contains the DTOs for the selected `TKind`.
+> For server-side client DTO dispatch this is typically `typeof(ClientEventKind).Assembly`.
 
 ### Handling sender-wrapped broadcasts
 
